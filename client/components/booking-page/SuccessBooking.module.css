@@ -1,0 +1,48 @@
+/* SuccessBooking.module.css */
+
+/* Center the container */
+.success-booking-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f9;
+  }
+  
+  /* Styling for coins display */
+  .coins-icon {
+    font-size: 24px;
+    margin-right: 8px; /* Spacing between the icon and text */
+  }
+  
+  .coins-text {
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .coins-text strong {
+    color: #28a745; /* Highlight the number of coins in green */
+    font-weight: bold;
+  }
+  
+  /* Success and error message styling */
+  .result-image {
+    max-width: 150px;
+    margin-top: 20px;
+  }
+  
+  .message {
+    font-size: 18px;
+    color: #333;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  /* Spinner container */
+  .spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 15px;
+  }
+  
