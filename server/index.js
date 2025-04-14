@@ -28,6 +28,7 @@ app.use(cors());
 app.use("/user", require("./routes/user"));
 app.use("/admin", require("./routes/admin"));
 app.use("/flight", require("./routes/flight"));
+app.use("/hotel", require("./routes/hotel"));
 
 const options = {
   key: fs.readFileSync(path.join(__dirname,'./ssl/flightbooking.pem')),
