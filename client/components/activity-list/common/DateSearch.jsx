@@ -13,12 +13,13 @@ const DateSearch = () => {
         inputClass="custom_input-picker"
         containerClassName="custom_container-picker"
         value={dates}
-        onChange={setDates}
+        onChange={(dates) => console.log(object)}
         numberOfMonths={2}
         offsetY={10}
         range
         rangeHover
         format="MMMM DD"
+
       />
     </div>
   );

@@ -628,7 +628,7 @@ const MainFilterSearchBox = (props) => {
           <label
             className={`radio-box-trip cursor-pointer py-5 sm:py-5 rounded-5 text-white ${selectedTrip ? "bg-blue-500 border border-blue-500" : "bg-dark-1"
               }`}
-        
+
             onClick={() => setSelectedTrip(false)}
           >
             One Way
@@ -636,7 +636,7 @@ const MainFilterSearchBox = (props) => {
           <label
             className={`radio-box-trip cursor-pointer ml-4 py-5 sm:py-5 rounded-5 text-white ${!selectedTrip ? "bg-blue-500 border border-blue-500" : "bg-dark-1"
               }`}
-          
+
             onClick={() => setSelectedTrip(true)}
           >
             Round Trip
@@ -646,7 +646,7 @@ const MainFilterSearchBox = (props) => {
 
 
       <div
-        className="mainSearch -col-4 px-20 py-20 lg:px-20 lg:pt-5 lg:pb-20 mt-15 rounded" style={{    backgroundColor: "white"}}
+        className="mainSearch -col-4 px-20 py-20 lg:px-20 lg:pt-5 lg:pb-20 mt-15 rounded" style={{ backgroundColor: "white" }}
       >
 
         <div

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Faq from "../../components/faq/Faq";
 import Seo from "../../components/common/Seo";
 import Header1 from "../../components/header/header";
@@ -7,11 +7,26 @@ import ExtraLogin from "../../components/home/home/ExtraLogin";
 import NewsletterSection from "../../components/home/home/Newsletter";
 import MainFilterSearchBox from "../../components/activity-list/activity-list-v1/MainFilterSearchBox";
 import HotelProperties from "../../components/hotel-list/hotel-list-v1/HotelProperties";
-import Sidebar from "../../components/hotel-list/hotel-list-v1/Sidebar";
-import TopHeaderFilter from "../../components/hotel-list/hotel-list-v1/TopHeaderFilter";
 import dynamic from "next/dynamic";
 
 const Hotels = () => {
+  const [hotelData, setHotelData] = useState({});
+  console.log(hotelData);
+  useEffect(() => {
+    localStorage.removeItem("data");
+    localStorage.removeItem("success");
+    const handleBeforeUnload = (event) => {
+      const message = "Are you sure you want to leave?";
+      event.returnValue = message; // Standard for most browsers
+      return message; // For some older browsers
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
   return (
     <div>
       <Seo pageTitle="Hotels Booking" />
@@ -39,66 +54,26 @@ const Hotels = () => {
                   Choose from houses, villas, chalets and more
                 </p>
               </div>
-              <MainFilterSearchBox />
+              <MainFilterSearchBox setHotelData={setHotelData} />
             </div>
           </div>
         </div>
       </section>
 
       {/* hotels list */}
-      <section className="layout-pt-md layout-pb-md">
-        <div className="container">
-          <div className="row y-gap-30">
-            <div className="col-xl-3">
-              <aside className="sidebar y-gap-40 xl:d-none">
-                <Sidebar />
-              </aside>
-              {/* End sidebar for desktop */}
-
-              <div
-                className="offcanvas offcanvas-start"
-                tabIndex="-1"
-                id="listingSidebar"
-              >
-                <div className="offcanvas-header">
-                  <h5 className="offcanvas-title" id="offcanvasLabel">
-                    Filter Rentals
-                  </h5>
-                  <button
-                    type="button"
-                    className="btn-close"
-                    data-bs-dismiss="offcanvas"
-                    aria-label="Close"
-                  ></button>
+      {hotelData?.data?.length > 0 && (
+        <section className="layout-pt-md layout-pb-md">
+          <div className="container">
+            <div className="row y-gap-30">
+              <div className="col-xl-9 ">
+                <div className="row y-gap-30">
+                  <HotelProperties hotelData={hotelData.data || []} />
                 </div>
-                {/* End offcanvas header */}
-
-                <div className="offcanvas-body">
-                  <aside className="sidebar y-gap-40  xl:d-block">
-                    <Sidebar />
-                  </aside>
-                </div>
-                {/* End offcanvas body */}
               </div>
-              {/* End mobile menu sidebar */}
             </div>
-            {/* End col */}
-
-            <div className="col-xl-9 ">
-              <TopHeaderFilter />
-              <div className="mt-30"></div>
-              {/* End mt--30 */}
-              <div className="row y-gap-30">
-                <HotelProperties />
-              </div>
-              {/* End .row */}
-            </div>
-            {/* End .col for right content */}
           </div>
-          {/* End .row */}
-        </div>
-        {/* End .container */}
-      </section>
+        </section>
+      )}
 
       <ExtraLogin />
       <Faq />
