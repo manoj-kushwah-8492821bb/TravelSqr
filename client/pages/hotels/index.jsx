@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import Faq from "../../components/faq/Faq";
 import Seo from "../../components/common/Seo";
 import Header1 from "../../components/header/header";
@@ -11,22 +11,8 @@ import dynamic from "next/dynamic";
 
 const Hotels = () => {
   const [hotelData, setHotelData] = useState({});
-  console.log(hotelData);
-  useEffect(() => {
-    localStorage.removeItem("data");
-    localStorage.removeItem("success");
-    const handleBeforeUnload = (event) => {
-      const message = "Are you sure you want to leave?";
-      event.returnValue = message; // Standard for most browsers
-      return message; // For some older browsers
-    };
 
-    window.addEventListener("beforeunload", handleBeforeUnload);
 
-    return () => {
-      window.removeEventListener("beforeunload", handleBeforeUnload);
-    };
-  }, []);
   return (
     <div>
       <Seo pageTitle="Hotels Booking" />

@@ -34,7 +34,7 @@ const Header1 = () => {
   const services = [
     { name: "Flights", path: ["/", "/flight"] },
     { name: "Hotels", path: ["/hotels"] },
-    { name: "Car Rental", path: ["/car-rental"] },
+    { name: "Cabs Hire", path: ["/car-rental"] },
   ];
 
   useEffect(() => {

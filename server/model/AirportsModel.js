@@ -19,6 +19,10 @@ const AirportSchema = new mongoose.Schema(
       type: String,
       // required: true,
     },
+    countryCode: {
+      type: String,
+      // required: true,
+    },
     status: {
       type: Number,
       required: true,

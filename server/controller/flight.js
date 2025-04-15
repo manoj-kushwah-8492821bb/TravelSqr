@@ -257,7 +257,7 @@ exports.createflightOrder = async (req, res) => {
       currency: priceData.price.currency,
       payment_method_types: [payment_method],
     });
-    console.log(paymentIntent.id);
+  
     let usd_amount = paymentIntent.amount / 100;
     if (priceData.price.currency != "USD") {
       usd_amount = await convertCurrency(
@@ -589,6 +589,7 @@ exports.getAirports = async (req, res) => {
           _id: 1,
           name: 1,
           country: 1,
+          countryCode: 1,
           code: 1,
           city: 1,
           status: 1,

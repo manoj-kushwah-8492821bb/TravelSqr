@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Faq from "../../components/faq/Faq";
 import Seo from "../../components/common/Seo";
 import Header1 from "../../components/header/header";
@@ -6,12 +6,14 @@ import Footer from "../../components/footer/footer";
 import ExtraLogin from "../../components/home/home/ExtraLogin";
 import NewsletterSection from "../../components/home/home/Newsletter";
 import MainFilterSearchBox from "../../components/car-list/car-list-v1/MainFilterSearchBox";
-import Sidebar from "../../components/car-list/car-list-v1/Sidebar";
 import CarPropertes from "../../components/car-list/car-list-v1/CarPropertes";
-import TopHeaderFilter from "../../components/car-list/car-list-v1/TopHeaderFilter";
 import dynamic from "next/dynamic";
 
 const Cabs = () => {
+  const [carData, setCarData] = useState(
+  );
+
+
   return (
     <>
       <Seo pageTitle="Cabs Booking" />
@@ -29,7 +31,7 @@ const Cabs = () => {
                   className="text-60 lg:text-40 md:text-30 text-white"
                   data-aos="fade-up"
                 >
-                  Car Rental for any kind of trip
+                  Cabs Hire for any kind of trip
                 </h1>
                 <p
                   className="text-white mt-6 md:mt-10"
@@ -41,61 +43,26 @@ const Cabs = () => {
                 </p>
               </div>
 
-              <MainFilterSearchBox />
+              <MainFilterSearchBox setCarData={setCarData} />
             </div>
           </div>
         </div>
       </section>
 
       {/* cabs list */}
-      <section className="layout-pt-md layout-pb-md">
-        <div className="container">
-          <div className="row y-gap-30">
-            <div className="col-xl-3">
-              <aside className="sidebar y-gap-40 xl:d-none">
-                <Sidebar />
-              </aside>
-              {/* End sidebar for desktop */}
-
-              <div
-                className="offcanvas offcanvas-start"
-                tabIndex="-1"
-                id="listingSidebar"
-              >
-                <div className="offcanvas-header">
-                  <h5 className="offcanvas-title" id="offcanvasLabel">
-                    Filter Hotels
-                  </h5>
-                  <button
-                    type="button"
-                    className="btn-close"
-                    data-bs-dismiss="offcanvas"
-                    aria-label="Close"
-                  ></button>
+      {carData?.searchDetails?.data?.length > 0 && (
+        <section className="layout-pt-md layout-pb-md">
+          <div className="container">
+            <div className="row y-gap-30">
+              <div className="col-xl-9 ">
+                <div className="row y-gap-30">
+                  <CarPropertes carsData={carData} />
                 </div>
-                {/* End offcanvas header */}
-
-                <div className="offcanvas-body">
-                  <aside className="sidebar y-gap-40  xl:d-block">
-                    <Sidebar />
-                  </aside>
-                </div>
-                {/* End offcanvas body */}
-              </div>
-              {/* End mobile menu sidebar */}
-            </div>
-            {/* End col */}
-
-            <div className="col-xl-9 ">
-              <TopHeaderFilter />
-              <div className="mt-30"></div>
-              <div className="row y-gap-30">
-                <CarPropertes />
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
       <ExtraLogin />
       <Faq />
       <NewsletterSection />
