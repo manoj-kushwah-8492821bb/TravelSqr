@@ -29,11 +29,12 @@ app.use("/user", require("./routes/user"));
 app.use("/admin", require("./routes/admin"));
 app.use("/flight", require("./routes/flight"));
 app.use("/hotel", require("./routes/hotel"));
+app.use("/transfer", require("./routes/transferRoutes"));
 
 const options = {
-  key: fs.readFileSync(path.join(__dirname,'./ssl/flightbooking.pem')),
-  cert: fs.readFileSync(path.join(__dirname,'./ssl/cefaf1a435ef000c.crt')),
-  ca: [fs.readFileSync(path.join(__dirname,'./ssl/gd_bundle-g2-g1.crt'))],
+  key: fs.readFileSync(path.join(__dirname, './ssl/flightbooking.pem')),
+  cert: fs.readFileSync(path.join(__dirname, './ssl/cefaf1a435ef000c.crt')),
+  ca: [fs.readFileSync(path.join(__dirname, './ssl/gd_bundle-g2-g1.crt'))],
 
 };
 
